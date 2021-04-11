@@ -25,11 +25,11 @@ This circuit checks whether P<sub>k</sub> == C<sub>k</sub> is satisfied and stor
 preference_list = Qubits[N]; // Array of N qubits, N being the number of preferences
 ```
 
-### Use XOR and X gate to check each clause
+### Use CNOT and X gate to check each clause
 ```c#
 i = 0
 for clause in clause_list{}
-    XOR(clause[0], clause[1], clause_qubits[i]);
+    CNOT(clause[0], clause[1], clause_qubits[i]);
     Controlled X(inputs, output);
     i += 1;
 }
