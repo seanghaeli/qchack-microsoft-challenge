@@ -1,6 +1,6 @@
 # Matching Database Using Grover's Algorithm
 
-The following repo contains a proposed matchmaking tool where given a set of inputs, it would return an output with values that are a perfect match from an unsorted database.
+The following repo contains a proposed matchmaking tool where given a set of inputs, it would return an output with values that are a perfect match from an unsorted database. Quantum Tinder, if you will.
 
 ## Problem Overview
 
