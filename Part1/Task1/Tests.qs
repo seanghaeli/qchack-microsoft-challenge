@@ -11,6 +11,7 @@ namespace QCHack.Task1 {
 
 
     internal operation VerifySingleOutputFunction(numInputs : Int, op : ((Qubit[], Qubit) => Unit is Adj+Ctl), predicate : (Int -> Bool)) : Unit {
+
         for assignment in 0 .. 2^numInputs - 1 {
             use (inputs, output) = (Qubit[numInputs], Qubit());
             within {
@@ -44,4 +45,5 @@ namespace QCHack.Task1 {
             VerifySingleOutputFunction(3, Task1_DivisibleByFour, IsDivisibleByFour);
         }
     }
+
 }
