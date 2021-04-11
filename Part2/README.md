@@ -33,5 +33,5 @@ for clause in clause_list{}
 }
 ```
 
-The final state of the bits p1, p2, p3, p4 will only all be 1 in the case that there is a perfect match with the characteristics of the user such that P<sub>1</sub> == C<sub>1</sub>, P<sub>2</sub> == C<sub>2</sub>, ... P<sub>n</sub> == C<sub>n</sub> for n defined comparison attributes. At this point, we have defined the problem as a Grover Search, and since we are marking our output correctly, we can be confident that the Grover Search will give us a perfect match whenever one occurs at a faster rate than what could occur classically. 
+The final state of the bits P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub>, P<sub>4</sub> will only all be 1 in the case that there is a perfect match with the characteristics of the user such that P<sub>1</sub> == C<sub>1</sub>, P<sub>2</sub> == C<sub>2</sub>, ... P<sub>n</sub> == C<sub>n</sub> for n defined comparison attributes. At this point, we have defined the problem as a Grover Search, and since we are marking our output correctly, we can be confident that the Grover Search will give us a perfect match whenever one occurs at a faster rate than what could occur classically. 
 
