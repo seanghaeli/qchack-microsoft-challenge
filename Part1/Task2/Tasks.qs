@@ -31,7 +31,7 @@ namespace QCHack.Task2 {
         }
 
         Controlled X(inputs,output);
-        
+   
     }
 }
 

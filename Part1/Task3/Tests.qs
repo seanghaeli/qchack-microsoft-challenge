@@ -48,6 +48,41 @@ namespace QCHack.Task3 {
         }
     }
 
+    internal operation VerifySingleOutputFunction2(numInputs : Int, op : ((Qubit[], Qubit) => Unit is Adj+Ctl), predicate : (Int -> Bool), arr: (Bool,Bool)[]) : Unit {
+        for assignment in 0 .. 2^numInputs - 1 {
+            use (inputs, output) = (Qubit[numInputs], Qubit());
+            within {
+                ApplyXorInPlace(assignment, LittleEndian(inputs));
+                AllowAtMostNCallsCA(0, Measure, "You are not allowed to use measurements");
+            } apply {
+                ResetNQubitOpCount();
+                
+                op(inputs, output);
+
+                // Take into account that CCNOT is NOT natively implemented on Toffoli simulator,
+                // so it counts as two three-qubit gates - CCNOT and Controlled X.
+                // ApplyAnd has the same implementation.
+                let op3 = GetExactlyNQubitOpCount(3) - GetOracleCallsCount(CCNOT) - GetOracleCallsCount(ApplyAnd);
+                // Message($"{GetExactlyNQubitOpCount(3)} - {GetOracleCallsCount(CCNOT)} - {GetOracleCallsCount(ApplyAnd)} = {op3}");
+
+                // One 4-qubit operation goes for calling op itself and should be allowed
+                let op4plus = GetNPlusQubitOpCount(4) - 1;
+
+                Fact(op3 <= 1, $"You are allowed to use at most one 3-qubit gate, and you used {op3}");
+                Fact(op4plus == 0, $"You are not allowed to use gates with 4 or more qubits, and you used {op4plus}");
+            }
+
+            // Check that the result is expected
+            let actual = ResultAsBool(MResetZ(output));
+            let expected = predicate(assignment);
+            // let arr[assignment]=(actual, expected);
+
+            // Check that the inputs were not modified
+            Fact(MeasureInteger(LittleEndian(inputs)) == 0, 
+                $"The input states were modified for assignment {assignment}");
+        }
+    }
+
 
     // ------------------------------------------------------
     internal function IsTriangleValid (input : Int) : Bool {
