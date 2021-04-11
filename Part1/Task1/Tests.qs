@@ -42,7 +42,7 @@ namespace QCHack.Task1 {
     @Test("ToffoliSimulator")
     operation Test1_DivisibleByFour() : Unit {
         for i in 3 .. 5 {
-            VerifySingleOutputFunction(3, Task1_DivisibleByFour, IsDivisibleByFour);
+            VerifySingleOutputFunction(i, Task1_DivisibleByFour, IsDivisibleByFour);
         }
     }
 

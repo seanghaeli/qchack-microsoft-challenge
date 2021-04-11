@@ -25,6 +25,8 @@ namespace QCHack.Task3 {
     // on your solution to check that it passes before you submit the solution!
     operation Task3_ValidTriangle (inputs : Qubit[], output : Qubit) : Unit is Adj+Ctl {
         // ...
+
+
     }
 }
 
